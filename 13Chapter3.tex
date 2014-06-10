@@ -408,6 +408,35 @@ which appears as \emph{B} (dark orange) on the plot. Only the first ATC level is
     \label{fig3-12}
 \end{figure}
 
+//TODO insert example of ditribution before table and discuss a bit
+
+
+//TODO insert table p-values and average similarities
+
+\begin{table}[htbp]
+\footnotesize
+\begin{tabular}{|p{2cm}|p{3.5cm}|p{3.5cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{ATC category} & \textbf{Average similarity when in the same group} & \textbf{Average similarity when in different groups} & \textbf{Difference} & \textbf{p-value} \\ \hline
+A & 0.151 & 0.135 & 0.016 & 2.4e-05 \\ \hline
+B & 0.165 & 0.122 & 0.044 & 2.4e-05 \\ \hline
+C & 0.155 & 0.134 & 0.021 & 2.4e-05 \\ \hline
+D & 0.193 & 0.137 & 0.056 & 2.4e-05 \\ \hline
+G & 0.201 & 0.136 & 0.065 & 2.4e-05 \\ \hline
+H & 0.252 & 0.137 & 0.115 & 2.4e-05 \\ \hline
+J & 0.270 & 0.124 & 0.146 & 2.4e-05 \\ \hline
+L & 0.162 & 0.130 & 0.033 & 2.4e-05 \\ \hline
+M & 0.261 & 0.132 & 0.128 & 2.4e-05 \\ \hline
+N & 0.171 & 0.130 & 0.041 & 2.4e-05 \\ \hline
+P & 0.193 & 0.139 & 0.054 & 2.4e-05 \\ \hline
+R & 0.236 & 0.146 & 0.090 & 2.4e-05 \\ \hline
+S & 0.155 & 0.140 & 0.015 & 2.4e-05 \\ \hline
+V & 0.151 & 0.134 & 0.017 & 3.5e-05 \\ \hline
+\end{tabular}
+\caption{Average similarity and significance values for the tests. The significance threshold is of 7.1e-4 after applying Bonferroni correction for multiple hypotheses testing (n = 14 for an original p \textless 0.01)}
+\label{table:tablepvalues}
+\end{table}
+
 The compounds are further grouped by therapeutic indications as defined by the ATC. The heat map reveals some square patches around the central diagonal; the overall similarity appears higher when compounds from the same ATC group are considered. A significance analysis (see method, section 3.2.7) revealed that the average MoA similarity of compounds belonging to the same ATC category is significantly higher than when compounds belonging to different categories are compared. Indeed, for each category, the p-value was inferior to 0.05 based on 20,000 random permutations over the similarity values. This result supports the idea that drugs with similar MoAs have similar indications. Note that the mean of the similarity values was considered for the statistical analysis; some outliers are also present in the map, which can be interpreted as repositioning hypotheses. These outliers have indeed similar MoAs, yet they belong to totally different therapeutic areas and are used for different purposes according to the ATC. Such cases will be further analysed and discussed in Chapter 4. Hypotheses have to be manually examined and interpreted, as ATC categories are only covering some of the legal usage of the drugs. I expect to find off-label indications in the predictions for instance, as well as some false positives.
 
 Figure \ref{fig3-13} present similar association behaviour when two levels of the ATC are considered (no statistical significance performed). In this case the higher intensity squares are smaller, reflecting the finer resolution of the therapeutic areas (2 ATC levels).
