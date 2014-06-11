@@ -209,9 +209,16 @@ Recall is the probability that a randomly selected drug from the ATC has been as
 The semantic similarity measure performed over the FTC is a derivative of the Jaccard index \citep{jaccard1912distribution} \citep{rogers1960computer} (see Chapter 2, section 2.4.3). It is probably best understood as an example: if two classes A and B are considered, the semantic similarity between these classes corresponds to the number of OWL superclasses (direct and indirect, obtained with a reasoner) that are shared by A and B (intersection) divided by the number of superclasses of A or B (union). The index ranges from 0 (totally different) to 1 (identical). A similar approach was successfully implemented by \citep{hoehndorf2011phenomenet}, for similarity computations over phenotypic traits.
 
 \subsection{Mode of action similarity against indication}
-A statistical analysis was performed over the data presented on section 3.5.2. When two compounds are randomly taken, they have on average a higher mode of action similarity when they are assigned to the same ATC category (one ATC level). In order to estimate whether this observation was due to chance only, I formulated the following null hypothesis (H0): \emph{for a pair of drug A and B, it does not matter to which ATC category they belong to, their similarity is always average.} The alternative hypothesis (H1) was: \emph{for a pair of drug A and B, it matters in which ATC category they belong to, their similarity is significantly different than average.}
+\label{moa-pvalues}
+A statistical analysis was performed over the data presented on section 3.5.2. When two compounds are randomly taken, they have on average a higher mode of action similarity when they are assigned to the same ATC category (one ATC level, see Table \ref{table:tablepvalues} for values). In order to estimate whether this observation was due to chance only, I formulated the following null hypothesis (H0): \emph{for a pair of drugs X and Y, it does not matter to which ATC category they belong to, their similarity is always average.} The alternative hypothesis (H1) was: \emph{for a pair of drugs X and Y, it matters in which ATC category they belong to, their similarity is significantly different than average.}
+The distribution of similarity values for the group H (hormonal system) is given as an example of Figure TODO. The data does not follow a normal distribution, therefore I decided to apply a permutation test in order to estimate the significance values.
 
-A permutation test was then performed for each ATC category. For example, I started with the ATC category A (first row on Figure \ref{fig3-12}), looked at the similarity values when pairs of compounds both belong to the category A (top right corner square) and compared it to the similarity values when the pair of compounds belong to different categories (A and B, A and C and so forth). For each comparison I obtained two distributions of values (not shown). On average the similarity values are always higher when the two compounds belong to the same category (A/A versus A/B for instance). A permutation test (n = 20,000) was performed in order to see whether this observation was due to chance only. I was able to reject the null hypothesis for a significance level of 0.05 all the times. The choice for a permutation test was driven by the fact that MoA similarity values do not follow any type of standard distribution (data not shown).
+
+//TODO fig distribution
+
+
+A permutation test was then performed for each ATC category. For example, I started with the ATC category A (first row on Figure \ref{fig3-12}), looked at the similarity values when pairs of compounds both belong to the category A (top right corner square) and compared it to the similarity values when the pair of compounds belong to different categories (A and B, A and C and so forth). For each comparison I obtained two distributions of values (see example Figure TODO). On average the similarity values are always higher when the two compounds belong to the same category (A/A versus A/B for instance). A permutation test (n = 1,000,000) was performed in order to see whether this observation was due to chance only. I was able to reject the null hypothesis for a significance level of 0.00071 all the times.
+The significance threshold takes in account multiple hypotheses testing. In this regard, I applied Bonferroni correction: as 14 tests are performed and given an original significance threshold arbitrary set to 0.01, the corrected p-value is of 0.01/14, or 0.00071.
 
 \subsection{Knowledge base specification}
 \label{specskb}
@@ -408,10 +415,9 @@ which appears as \emph{B} (dark orange) on the plot. Only the first ATC level is
     \label{fig3-12}
 \end{figure}
 
-//TODO insert example of ditribution before table and discuss a bit
-
-
-//TODO insert table p-values and average similarities
+The compounds are further grouped by therapeutic indications as defined by the ATC. The heat map reveals some square patches around the central diagonal; the overall similarity appears higher when compounds from the same ATC group are considered.
+A significance analysis (see method, section \ref{moa-pvalues}) revealed that the average MoA similarity of compounds belonging to the same ATC category is significantly higher than when compounds belonging to different categories are compared. These results are summarised in Table \ref{table:tablepvalues}, where average similarity values are listed, together with the p-values for the permutation tests. An example of distribution for one category is presented in section \ref{moa-pvalues}.
+As many hypotheses are tested, namely one test for each of the 14 ATC therapeutic groups, I applied Bonferroni correction for multiple hypotheses testing (see section \ref{moa-pvalues}). The desired significance threshold moved from 0.01 to 0.00071 in order to reject the null hypothesis. In this setting, all the permutation tests (1,000,000 permutations) gave p-values below the significance threshold, confirming that when a pairs of drugs belonging to the same therapeutic category have on average significantly higher functional similarities.
 
 \begin{table}[htbp]
 \footnotesize
@@ -433,11 +439,11 @@ R & 0.236 & 0.146 & 0.090 & 2.4e-05 \\ \hline
 S & 0.155 & 0.140 & 0.015 & 2.4e-05 \\ \hline
 V & 0.151 & 0.134 & 0.017 & 3.5e-05 \\ \hline
 \end{tabular}
-\caption{Average similarity and significance values for the tests. The significance threshold is of 7.1e-4 after applying Bonferroni correction for multiple hypotheses testing (n = 14 for an original p \textless 0.01)}
+\caption{Average similarity and significance values for the tests. The significance threshold is of 7.1e-4 after applying Bonferroni correction for multiple hypotheses testing (n = 14 for an original p \textless 0.01).}
 \label{table:tablepvalues}
 \end{table}
 
-The compounds are further grouped by therapeutic indications as defined by the ATC. The heat map reveals some square patches around the central diagonal; the overall similarity appears higher when compounds from the same ATC group are considered. A significance analysis (see method, section 3.2.7) revealed that the average MoA similarity of compounds belonging to the same ATC category is significantly higher than when compounds belonging to different categories are compared. Indeed, for each category, the p-value was inferior to 0.05 based on 20,000 random permutations over the similarity values. This result supports the idea that drugs with similar MoAs have similar indications. Note that the mean of the similarity values was considered for the statistical analysis; some outliers are also present in the map, which can be interpreted as repositioning hypotheses. These outliers have indeed similar MoAs, yet they belong to totally different therapeutic areas and are used for different purposes according to the ATC. Such cases will be further analysed and discussed in Chapter 4. Hypotheses have to be manually examined and interpreted, as ATC categories are only covering some of the legal usage of the drugs. I expect to find off-label indications in the predictions for instance, as well as some false positives.
+This result supports the idea that drugs with similar MoAs have similar indications. Note that the mean of the similarity values was considered for the statistical analysis; some outliers are also present in the map, which can be interpreted as repositioning hypotheses. These outliers have indeed similar MoAs, yet they belong to totally different therapeutic areas and are used for different purposes according to the ATC. Such cases will be further analysed and discussed in Chapter 4. Hypotheses have to be manually examined and interpreted, as ATC categories are only covering some of the legal usage of the drugs. I expect to find off-label indications in the predictions for instance, as well as some false positives.
 
 Figure \ref{fig3-13} present similar association behaviour when two levels of the ATC are considered (no statistical significance performed). In this case the higher intensity squares are smaller, reflecting the finer resolution of the therapeutic areas (2 ATC levels).
 
