@@ -385,11 +385,7 @@ In total there are 1,280 FDA-approved DrugBank compounds (chemical and biotherap
 \section{Evaluation}
 The content of the FTC has been evaluated against the drug categorisation of the ATC, which has been produced by manual curation and serves as a gold standard. \emph{A priori}, both resources serve different purposes and as a consequence, the evaluation has to take this into consideration (cf section 3.6.2). The full methodology behind the evaluation is described in the section \ref{evaluation} of the methodology. Briefly, for 68 categories from the FTC one can manually identify a set of semantically equivalent categories in the ATC. I call these equivalent categories the \emph{evaluation points}. All drugs from each evaluation point were then assessed to determine the quality of the FTC against the gold standard, i.e.\ the ATC. For example, the FTC category \emph{Anti-hydrogen:potassium-exchanging ATPase activity agent} (FTC\_A0008900) has been manually asserted as equivalent to the ATC category \emph{Proton pump inhibitors} (A02BC). A summary of this evaluation point is furthermore available online at \url{https://www.ebi.ac.uk/chembl/ftc/evaluation/FTC\_A0008900}.
 
-For 1,280 DrugBank compounds in the FTC, 1,134 are also present in the ATC, therefore only those were considered. The \emph{evaluation points} cover a total of 471 DrugBank compounds or around 41\% of common drugs to both classifications. Out of these, 275 compounds are true positives, i.e.\ they match both, the FTC and ATC categories for a given evaluation point. The \emph{proton pump inhibitor} evaluation point is such a case where all the drugs (omeprazole, esomeprazole, pantoprazole, lansoprazole, rabeprazole) are present both in the FTC category and in the corresponding ATC category. The total number of compounds from an ATC category but where it was not possible to identify a corresponding FTC category is 33 (false negatives).
-
-//TODO discuss them
-
-Finally, 280 compounds are present in a FTC class but not in any corresponding ATC category (false positives). Overall a recall of 89\% is derived; this percentage indicates that the automatic build of the FTC covers a good portion of the content already present in the ATC. The precision of 50\% shows that the FTC contains for a given MoA many more drugs than the equivalent ATC categories. This result was expected and comes the original idea behind the FTC: representing in a systematic fashion the implicit and explicit MoAs of drugs, in particular the ones not already indexed by current classification scheme.
+For 1,280 DrugBank compounds in the FTC, 1,134 are also present in the ATC, therefore only those were considered. The \emph{evaluation points} cover a total of 471 DrugBank compounds or around 41\% of common drugs to both classifications. Out of these, 275 compounds are true positives, i.e.\ they match both, the FTC and ATC categories for a given evaluation point. The \emph{proton pump inhibitor} evaluation point is such a case where all the drugs (omeprazole, esomeprazole, pantoprazole, lansoprazole, rabeprazole) are present both in the FTC category and in the corresponding ATC category. The total number of compounds from an ATC category but where it was not possible to identify a corresponding FTC category is 33 (false negatives). The false negatives are listed and classified by error types on Tables \ref{table:falsenegatives} and \ref{table:falsenegatives2}. The majority of misclassification cases are missing DrugBank annotations (24/33), i.e. missing target annotation for a drug, in particular secondary targets, relevant for polypharmacology. Sometimes curation errors are responsible for the false negative, with one error in the ATC and 4 within DrugBank (curation team contacted for corrections). Finally, sometimes the mapping between ATC categories to a FTC one can be ambiguous and not exact, leading to a false classification (5 cases). The error analysis illustrate some of the limitation of the FTC: if an annotation is missing or erroneous in the primary resource, it cascades and impact the automated reasoning step. Fortunately, all these errors have understood reasons, emphasising the validity of the methodology used to build the resource.
 
 \begin{table}[htbp]
 \scriptsize
@@ -403,27 +399,48 @@ Dehydro-epiandrosterone (DB01708) & Androgen receptor agonists (A14AA or G03B) &
 Procaine (DB00721) & Antiarrhythmics (C01BA or C01BB or C01BC) & Anti-voltage-gated sodium channel activity involved in regulation of cardiac muscle cell action potential agent (FTC\_A0086006) & Ambiguous manual mapping \\ \hline
 Nialamide (DB04820) & Monoamine oxidase inhibitors & Anti-primary amine oxidase activity agent (FTC\_A0008131) & Missing DrugBank annotation \\ \hline
 Pindolol (DB00960) & Beta blocking agents (C07 or S01ED) & Anti-beta2-adrenergic receptor activity agent (FTC\_A0004941) & Erroneous DrugBank annotation \\ \hline
-Bopindolol (DB08807) & Beta blocking agents (C07 or S01ED) & Anti-beta2-adrenergic receptor activity agent (FTC\_A0004941) & Erroneous DrugBank annotation \\ \hline
-Practolol (DB01297) & Beta blocking agents (C07 or S01ED) & Anti-beta2-adrenergic receptor activity agent (FTC\_A0004941) & Ambiguous manual mapping \\ \hline
-Atenolol (DB00335) & Beta blocking agents (C07 or S01ED) & Anti-beta2-adrenergic receptor activity agent (FTC\_A0004941) & Ambiguous manual mapping \\ \hline
-Acebutolol (DB01193) & Beta blocking agents (C07 or S01ED) & Anti-beta2-adrenergic receptor activity agent (FTC\_A0004941) & Erroneous DrugBank annotation \\ \hline
-Esmolol (DB00187) & Beta blocking agents (C07 or S01ED) & Anti-beta2-adrenergic receptor activity agent (FTC\_A0004941) & Missing DrugBank annotation \\ \hline
-Bromocriptine (DB01200) & Beta blocking agents (C07 or S01ED) & Anti-beta2-adrenergic receptor activity agent (FTC\_A0004941) & Missing DrugBank annotation \\ \hline
+Bopindolol (DB08807) & " & " & Erroneous DrugBank annotation \\ \hline
+Practolol (DB01297) & " & " & Ambiguous manual mapping \\ \hline
+Atenolol (DB00335) & " & " & Ambiguous manual mapping \\ \hline
+Acebutolol (DB01193) & " & " & Erroneous DrugBank annotation \\ \hline
+Esmolol (DB00187) & " & " & Missing DrugBank annotation \\ \hline
+Bromocriptine (DB01200) & " & " & Missing DrugBank annotation \\ \hline
 Bromocriptine (DB01200) & Prolactine inhibitors (G02CB) & Anti-prolactin receptor activity agent (FTC\_A0004925) & Missing DrugBank annotation \\ \hline
-Lisuride (DB00589) & Prolactine inhibitors (G02CB) & Anti-prolactin receptor activity agent (FTC\_A0004925) & Missing DrugBank annotation \\ \hline
-Cabergoline (DB00248) & Prolactine inhibitors (G02CB) & Anti-prolactin receptor activity agent (FTC\_A0004925) & Missing DrugBank annotation \\ \hline
+Lisuride (DB00589) & " & " & Missing DrugBank annotation \\ \hline
+Cabergoline (DB00248) & " & " & Missing DrugBank annotation \\ \hline
 Buserelin (DB06719) & Gonadotropin-releasing hormones (H01CA or L02AE) & Pro-gonadotropin-releasing hormone receptor activity agent (FTC\_P0004968) & Missing DrugBank annotation \\ \hline
 Teriparatide (DB06285) & Parathyroid hormones and analogues (H05AA) & Pro-parathyroid hormone receptor activity agent (FTC\_P0004991) & Missing DrugBank annotation \\ \hline
-Morphine (DB00295) & Dopamine receptor agonists & Pro-dopamine neurotransmitter receptor activity agent (FTC\_P0004952) & Missing DrugBank annotation or indirect action \\ \hline
-Morphine (DB00295) & Dopamine receptor agonists (N04BA or N04BC or C01CA) & Pro-dopamine neurotransmitter receptor activity agent (FTC\_P0004952) & Missing DrugBank annotation or indirect action \\ \hline
-Isoproterenol (DB01064) & Dopamine receptor agonists (N04BA or N04BC or C01CA) & Pro-dopamine neurotransmitter receptor activity agent (FTC\_P0004952) & Missing DrugBank annotation or indirect action \\ \hline
-Norepinephrine (DB00368) & Dopamine receptor agonists (N04BA or N04BC or C01CA) & Pro-dopamine neurotransmitter receptor activity agent (FTC\_P0004952) & Missing DrugBank annotation or indirect action \\ \hline
-Epinephrine (DB00668) & Dopamine receptor agonists (N04BA or N04BC or C01CA) & Pro-dopamine neurotransmitter receptor activity agent (FTC\_P0004952) & Missing DrugBank annotation or indirect action \\ \hline
-
 \end{tabular}
-\caption{False negative error analysis.}
+\caption{Isolation of false negative pairs resulting from the evaluation, alongside an interpretation. Errors are mostly due to missing DrugBank annotations.}
 \label{table:falsenegatives}
 \end{table}
+
+\begin{table}[htbp]
+\scriptsize
+\begin{tabular}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+Morphine (DB00295) & Dopamine receptor agonists & Pro-dopamine neurotransmitter receptor activity agent (FTC\_P0004952) & Missing DrugBank annotation or indirect action \\ \hline
+Morphine (DB00295) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Isoproterenol (DB01064) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Norepinephrine (DB00368) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Epinephrine (DB00668) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Phenylephrine (DB00388) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Midodrine (DB00211) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Mephentermine (DB01365) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Methoxamine (DB00723) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Metaraminol (DB00610) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Dobutamine (DB00841) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Arbutamine (DB01102) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Ephedrine (DB01364) & " & " & Missing DrugBank annotation or indirect action \\ \hline
+Ibudilast (DB05266) & Leukotriene receptor antagonists (R03DC) & Anti-leukotriene receptor activity agent (FTC\_A0004974) & Missing DrugBank annotation \\ \hline
+Ephedrine (DB01364) & Selective beta-2-adrenoreceptor agonists (R03AC) & Pro-norepinephrine binding agent (FTC\_P0051380) & Ambiguous manual mapping \\ \hline
+Ephedrine (DB01364) & " & " & Ambiguous manual mapping \\ \hline
+\end{tabular}
+\caption{(continued) Isolation of false negative pairs resulting from the evaluation, alongside an interpretation. Errors are mostly due to missing DrugBank annotations.}
+\label{table:falsenegatives2}
+\end{table}
+
+Finally, 280 compounds are present in a FTC class but not in any corresponding ATC category (false positives). Overall a recall of 89\% is derived; this percentage indicates that the automatic build of the FTC covers a good portion of the content already present in the ATC. The precision of 50\% shows that the FTC contains for a given MoA many more drugs than the equivalent ATC categories. This result was expected and comes the original idea behind the FTC: representing in a systematic fashion the implicit and explicit MoAs of drugs, in particular the ones not already indexed by current classification scheme.
 
 \section{Exploration}
 The FTC was designed to assist drug repositioning analyses by explicitly representing the polypharmacology of approved drugs. In this section I exemplify how the resource can be used to perform different types of analysis, whose will be extended in Chapter 4.
