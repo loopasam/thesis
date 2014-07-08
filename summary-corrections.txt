@@ -1,0 +1,38 @@
+1- The section 2.3.2 Expressivity and complexity is inadequate. It mixes several notions of complexity (e.g. the amount of information needed to describe something and the amount of computational power to compute something). As a result, the discussion expressivity Vs complexity is unconvincing. The candidate must fix this section.
+
+> The section has been edited as discussed during viva, the use notions should be clearer now (p.68).
+
+
+2- Neither of the reviewers were happy about the semantics present in the FTC identifiers (a subset of the numerical part of GO term identifiers and an indication if they are “pro” or “anti”). We would appreciate a discussion, and encourage the candidate to think about it for further releases.
+
+> A new section was created to discuss this point (section 3.6.3, p.132). I explain the limits of the identifier scheme chosen in regard to embedded semantics and future maintainability.
+
+
+3- In Figure 3.8, the candidate shows a specific example, Omeprazole, of a false negative. He does not tell us why this false negative occurs: there are three obvious possibilities: omission in GOA, omission in DrugBank or something is wrong with the candidates tool. We would like the candidate to find out for both this and the other 34 false negatives and to report the results of this in the thesis, so that we can be sure that in no case, the tool is at fault.
+
+> The misclassification cases are due to missing or erroneous annotations in DrugBank (28/33), error in the ATC (1/33) or ambiguous manual mapping between the ATC-FTC (4/33). The numbers and cases are discussed in section 3.4 (p.120) and presented in a new table (3.2 and 3.3, p.120).
+
+
+4- In the evaluation of FTC using pairwise comparisons (figures 3.12 to 3.15), the candidate use statistics based on a permutation approach. While he was able to explain them adequately in the defence, this was not the case in the manuscript. This must be fixed. Some explanation on the threshold 0.6 used for functional similarity would be useful (even if only along the line of “we took the same value as for the structural similarity because it was in the plateau between the two models of figure 4.7”)
+
+> I present the data distribution related to the permutation test in a new Figure (3.9, p.111). The presentation of the methodology has also been partially re-written for clarification. Moreover, the results of the statistical tests (p-values) are now explicitly listed in a new Table (3.4, p.126), and discussed in section 3.5.2 (p.125). Finally, I re-analysed the data taking into consideration multiple hypotheses testing (Bonferroni correction, missing from original analysis) and by increasing the number of permutations (10,000 --> 1,000,000): in this setting, the results are identical to the one presented before, with a much stronger statistical confidence.
+
+
+5- The semantic similarity computed by the candidate can only take discrete values. This results in many drug pairs that have different structural similarities but the same functional similarity (horizontal bars in scatter plots 4.2 to 4.9). The candidate should explain this, taking a specific example, such as the strong horizontal bar of functional similarity 0.67 on Figure 4.2
+
+> I created a new table (4.2, p.144) presenting a series of points of one of these horizontal lines. The main reason behind the line pattern is the presence of multiple targets with an identical set of MoA (as discussed during the viva). I have also added a paragraph discussing it (section 4.2.2, p.144).
+
+
+6- On figure 4.8, the candidate gives an example of two drugs with low structural and functional similarities (lower left part of the scatter plots). For the purpose of repositioning, it would informative to have also an example of drugs with very low structural similarity by high functional similarity (upper left part of the scatter plots).
+
+> A representative data point was extracted and discussed in a new Figure (4.8, p.151) and in text (p.151).
+
+
+7- In chapter 4, the candidate describes two possible approaches to use his tools: The similarity based approach and the toolbox approach. The candidate explained during the defence when to use each. This should be in the manuscript. He applied both methods to antihypertensive and founds 50 candidates with the toolbox approach and 16 with the similarity approach(Table 4.4). It would be extremely useful to know if the two lists overlap, why and why not.
+
+> A new section was created (4.3.4, p.183) discussing and comparing the two approaches. I also created a new Figure (4.23, p.185) comparing the result of both methodologies: the overlap exists at the indication level rather than for individuals drugs.
+
+
+8- Typographical errors and manual corrections on the hard-copies
+
+> All reported errors have been corrected in the final document.
